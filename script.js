@@ -1,17 +1,18 @@
-const cost_input = document.querySelector('.cost');
-const service_input = document.querySelector('.service');
-const people_input = document.querySelector('.people');
-
-const tip_btn = document.querySelector('#tip-btn');
-
-tip_btn.addEventListener('click', calc_tip);
-
-function calc_tip () {
- let cost = Number(cost_input.value);
- let service = Number(service_input.value) / 100;
- let people = Number(people_input.value);
- let tip = (cost * service) / people;
+document.querySelector('#tip-form').onchange = function(){
  
- let tip_el = document.querySelector('.tip-wrap .tip');
- tip_el.innerText = '£' + tip.toFixed(2) + ((people > 1) ? ' each' : '');
+ var bill = Number(document.getElementById('billTotal').value);
+ var tip = document.getElementById('tipInput').value;
+ document.getElementById('tipOutput').innerHTML = `${tip}%`;
+ var tipValue = bill * (tip/100)
+ var finalBill = bill + tipValue
+console.log(finalBill)
+var tipAmount = document.querySelector('#tipAmount')
+var totalBillWithTip = document.querySelector('#totalBillWithTip')
+ 
+tipAmount.value = tipValue.toFixed(2);
+totalBillWithTip.value =finalBill.toFixed(2);
+ 
+//Show Results
+ 
+ document.getElementById('results').style.display='block'
 }
